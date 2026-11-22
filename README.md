@@ -1,4 +1,4 @@
-# Coming Soon - Clean Coming Soon Template (Tailwind CSS, NextJs) by Themeptation
+# Coming Soon 
 
 ## How to use it?
 

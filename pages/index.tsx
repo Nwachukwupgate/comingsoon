@@ -40,7 +40,7 @@ const IndexPage = () => {
   };
 
   return (
-    <Layout title="Coming Soon - Clean Coming Soon Page (Tailwind CSS, NextJs & HTML5) created by themeptation.net">
+    <Layout title="Coming Soon | Upsworth PMS" >
       <img
         src="/images/xera.svg"
         alt="Themeptation "
