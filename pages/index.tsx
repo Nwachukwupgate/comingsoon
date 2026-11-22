@@ -43,7 +43,7 @@ const IndexPage = () => {
     <Layout title="Coming Soon | Upsworth PMS" >
       <img
         src="/images/xera.svg"
-        alt="Themeptation "
+        alt="Coming Soon | Upsworth PMS "
         className="absolute h-96 -top-20 -right-16 lg:right-5 lg:top-10 animate-blob"
       />
       <img

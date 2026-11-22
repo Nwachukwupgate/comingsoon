@@ -9,7 +9,7 @@
     "nextjs",
     "html"
   ],
-  "author": "Themeptation",
+  "author": "Promise",
   "private": true,
   "scripts": {
     "dev": "next dev",
