@@ -7,7 +7,7 @@ type Props = {
 };
 
 const Layout = ({ children, title = "This is the default title" }: Props) => (
-  <div className="relative min-h-screen flex flex-col justify-center items-center bg-hero bg-cover">
+  <div className="page-min-height relative flex flex-col items-center overflow-hidden bg-hero bg-cover">
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
@@ -16,7 +16,7 @@ const Layout = ({ children, title = "This is the default title" }: Props) => (
         name="description"
         content="Coming Soon | Upsworth PMS"
       />
-      <meta property="og:title" content={`${title} | Upsworth PMS`} />
+      <meta property="og:title" content={title} />
       <meta
         property="og:description"
         content="Coming Soon | Upsworth PMS"

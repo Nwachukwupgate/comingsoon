@@ -6,12 +6,14 @@ const IndexPage = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [isError, setIsError] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setLoading(true);
     setMessage("");
+    setIsError(false);
 
     try {
       const response = await fetch("/api/notify", {
@@ -22,64 +24,82 @@ const IndexPage = () => {
         body: JSON.stringify({ email }),
       });
 
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.message);
+      // Server errors can be HTML or raw provider text, so visitors only see
+      // the API's own message for problems they can fix themselves.
+      if (response.status >= 500) {
+        throw new Error("Server error");
       }
 
+      const result = await response.json();
+
       setMessage(result.message);
-      setEmail("");
+      setIsError(!response.ok);
+
+      if (response.ok) {
+        setEmail("");
+      }
     } catch (error) {
-      setMessage(
-        error instanceof Error ? error.message : "Something went wrong."
-      );
+      setMessage("Something went wrong. Please try again.");
+      setIsError(true);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <Layout title="Coming Soon | Upsworth PMS" >
+    <Layout title="Coming Soon | Upsworth PMS">
       <img
         src="/images/xera.svg"
-        alt="Coming Soon | Upsworth PMS "
-        className="absolute h-96 -top-20 -right-16 lg:right-5 lg:top-10 animate-blob"
+        alt="Coming Soon | Upsworth PMS"
+        className="relative flex-shrink-0 mt-4 -mb-6 h-figure lg:absolute lg:m-0 lg:h-96 lg:right-5 lg:top-10 short:absolute short:m-0 short:h-28 short:top-6 short:right-0 animate-blob"
       />
       <img
         src="/images/shapes.svg"
         alt="hero"
-        className="absolute w-full left-24 bottom-24 animate-blob2"
+        className="absolute w-full left-0 bottom-16 opacity-60 sm:left-24 sm:bottom-24 sm:opacity-100 pointer-events-none animate-blob2"
       />
-      <div className="relative z-10 py-6 space-y-16 lg:space-y-32 text-gray-900">
-        <div className="text-center space-y-10">
-          <h3 className="font-light text-xl uppercase tracking-wider">
+      <div className="relative z-10 w-full my-auto px-6 sm:px-10 py-6 lg:pt-20 lg:pb-0 short:py-4 space-y-8 sm:space-y-16 lg:space-y-32 short:space-y-5 text-gray-900">
+        <div className="text-center space-y-4 sm:space-y-10 short:space-y-3">
+          <h3 className="font-light text-base sm:text-xl short:text-sm uppercase tracking-wider">
             Coming soon
           </h3>
-          <h1 className="text-7xl lg:text-9xl font-extrabold">We’r blowing up</h1>
-          <p className="text-xl lg:text-2xl tracking-wide mx-10 lg:max-w-xl lg:mx-auto">
-            We`re under construction. Check back for an update soon. Stay in
+          <h1 className="text-hero lg:text-7xl xl:text-8xl lg:leading-none short:text-3xl font-extrabold">Something <span className="whitespace-nowrap">big is coming</span></h1>
+          <p className="text-lg sm:text-xl lg:text-2xl short:text-base tracking-wide max-w-[17rem] sm:max-w-xl short:max-w-sm mx-auto">
+            We’re under construction. Check back soon for updates. Stay in
             touch!
           </p>
         </div>
-        <form className="relative z-10 mx-10 lg:max-w-xl lg:mx-auto" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="info@upsworth-pms.com"
-            className="w-full text-2xl font-light text-gray-900 placeholder-gray-500 py-5 pl-5 pr-36 lg:pr-44 rounded-xl"
-          />
-          <button className="absolute top-1 right-1 bottom-1 px-4 lg:px-10 text-xl font-semibold bg-gray-900 text-white rounded-xl transition ease-in-out duration-500 hover:bg-red-500" disabled={loading}>
-             {loading ? "Sending..." : "Notify me"}
-          </button>
-        </form>
+        <div className="relative z-10 w-full max-w-sm sm:max-w-xl short:max-w-xl mx-auto">
+          <form className="relative z-10" onSubmit={handleSubmit}>
+            <input
+              type="email"
+              inputMode="email"
+              autoComplete="email"
+              aria-label="Email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="info@upsworth-pms.com"
+              className="w-full text-lg sm:text-2xl short:text-lg font-light text-gray-900 placeholder-gray-500 py-4 px-5 sm:py-5 sm:pr-40 lg:pr-48 short:py-3 short:pr-40 rounded-xl"
+            />
+            <button className="w-full mt-3 py-4 sm:w-auto sm:mt-0 sm:py-0 sm:absolute sm:top-1 sm:right-1 sm:bottom-1 short:w-auto short:mt-0 short:py-0 short:absolute short:top-1 short:right-1 short:bottom-1 px-4 lg:px-10 text-lg sm:text-xl short:text-base font-semibold bg-gray-900 text-white rounded-xl transition ease-in-out duration-500 hover:bg-red-500" disabled={loading}>
+               {loading ? "Sending..." : "Notify me"}
+            </button>
+          </form>
+          <p
+            role="status"
+            className={`text-center text-base sm:text-lg short:text-sm font-medium ${
+              message ? "mt-3 py-2 px-4 rounded-xl bg-white bg-opacity-90" : ""
+            } ${isError ? "text-red-700" : "text-green-700"}`}
+          >
+            {message}
+          </p>
+        </div>
       </div>
-      <div className="absolute bottom-5">
+      <div className="relative z-10 flex-shrink-0 pt-4 pb-5 short:pt-0 short:pb-3">
         <ul className="flex space-x-3">
           <li>
             <Link href="/">
-              <a className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-50 transition ease-in-out duration-500 hover:bg-red-500 hover:text-white hover:shadow-lg">
+              <a className="flex items-center justify-center w-11 h-11 lg:w-10 lg:h-10 rounded-full bg-gray-50 transition ease-in-out duration-500 hover:bg-red-500 hover:text-white hover:shadow-lg">
                 <svg
                   className="w-6 h-6"
                   fill="currentColor"
@@ -97,7 +117,7 @@ const IndexPage = () => {
           </li>
           <li>
             <Link href="/">
-              <a className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-50 transition ease-in-out duration-500 hover:bg-red-500 hover:text-white hover:shadow-lg">
+              <a className="flex items-center justify-center w-11 h-11 lg:w-10 lg:h-10 rounded-full bg-gray-50 transition ease-in-out duration-500 hover:bg-red-500 hover:text-white hover:shadow-lg">
                 <svg
                   className="w-6 h-6"
                   fill="currentColor"
@@ -111,7 +131,7 @@ const IndexPage = () => {
           </li>
           <li>
             <Link href="/">
-              <a className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-50 transition ease-in-out duration-500 hover:bg-red-500 hover:text-white hover:shadow-lg">
+              <a className="flex items-center justify-center w-11 h-11 lg:w-10 lg:h-10 rounded-full bg-gray-50 transition ease-in-out duration-500 hover:bg-red-500 hover:text-white hover:shadow-lg">
                 <svg
                   className="w-6 h-6"
                   fill="currentColor"
@@ -129,7 +149,7 @@ const IndexPage = () => {
           </li>
           <li>
             <Link href="/">
-              <a className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-50 transition ease-in-out duration-500 hover:bg-red-500 hover:text-white hover:shadow-lg">
+              <a className="flex items-center justify-center w-11 h-11 lg:w-10 lg:h-10 rounded-full bg-gray-50 transition ease-in-out duration-500 hover:bg-red-500 hover:text-white hover:shadow-lg">
                 <svg
                   className="w-6 h-6"
                   fill="currentColor"

@@ -8,6 +8,17 @@ module.exports = {
         "url('https://html.creativegigstf.com/vCamp/vCamp/images/assets/bg_01.png')",
     },
     extend: {
+      screens: {
+        // Phones held sideways: wide enough for `sm`, but very little height.
+        short: { raw: "(orientation: landscape) and (max-height: 500px)" },
+      },
+      height: {
+        // Scales with screen height so the form stays in view on small phones.
+        figure: "clamp(8rem, 28vh, 18rem)",
+      },
+      fontSize: {
+        hero: ["clamp(2rem, 12vw, 4.5rem)", "1.05"],
+      },
       animation: {
         blob: "blob 7s infinite",
         blob2: "blob2 10s infinite",
@@ -19,15 +30,15 @@ module.exports = {
             filter: "blur(2px)",
           },
           "33%": {
-            transform: "translate(30px, -50px) scale(1.1)",
+            transform: "translate(8%, -13%) scale(1.1)",
             filter: "blur(0px)",
           },
           "66%": {
-            transform: "translate(-20px, 20px) scale(0.9)",
+            transform: "translate(-5%, 5%) scale(0.9)",
             filter: "blur(2px)",
           },
           "100%": {
-            transform: "tranlate(0px, 0px) scale(1)",
+            transform: "translate(0px, 0px) scale(1)",
             filter: "blur(1px)",
           },
         },
@@ -41,7 +52,7 @@ module.exports = {
             filter: "blur(0px)",
           },
           "100%": {
-            transform: "tranlate(0px, 0px) scale(1)",
+            transform: "translate(0px, 0px) scale(1)",
             filter: "blur(1px)",
           },
         },

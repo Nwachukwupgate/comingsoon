@@ -1,8 +1,8 @@
-# Coming Soon 
+# Coming Soon
 
 ## How to use it?
 
-Execute to install dependecies
+Run this to install the dependencies:
 
 ```bash
 npm install
@@ -10,7 +10,7 @@ npm install
 yarn
 ```
 
-if it's done execute
+When that is done, run:
 
 ```bash
 npm run dev
@@ -18,9 +18,9 @@ npm run dev
 yarn dev
 ```
 
-Open your browser and type https://localhost:3000
+Open your browser and go to http://localhost:3000
 
-if you want the HtML version, execute
+If you want the HTML version, run:
 
 ```bash
 npm run build & npm run export
