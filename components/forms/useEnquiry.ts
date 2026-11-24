@@ -2,16 +2,20 @@
 
 import { useLocale } from "next-intl";
 import { useEffect, useRef, useState } from "react";
+import { languageEvent } from "@/lib/language";
 
 export type Status = "idle" | "sending" | "sent" | "failed";
 
 /** State, errors and sending, shared by both forms. */
-export function useEnquiry(initial: Record<string, string>) {
+export function useEnquiry(initial: Record<string, string>, firstStep = 0) {
   const locale = useLocale();
   const [values, setValues] = useState(initial);
   const [errors, setErrorMap] = useState<Record<string, string>>({});
   const [attempt, setAttempt] = useState(0);
   const [status, setStatus] = useState<Status>("idle");
+  const [step, setStep] = useState(firstStep);
+  const latest = useRef({ values, step });
+  const restored = useRef(false);
   const form = useRef<HTMLFormElement>(null);
   const result = useRef<HTMLDivElement>(null);
 
@@ -35,6 +39,39 @@ export function useEnquiry(initial: Record<string, string>) {
   useEffect(() => {
     if (attempt) form.current?.querySelector<HTMLElement>("[aria-invalid], [data-invalid] input")?.focus();
   }, [attempt]);
+
+  useEffect(() => {
+    latest.current = { values, step };
+  }, [values, step]);
+
+  // Changing language reloads the page. Answers are kept in this tab just long
+  // enough to put them back, and only when the visitor changes language.
+  useEffect(() => {
+    const key = `enquiry:${location.pathname}`;
+    const save = () => {
+      try {
+        if (Object.keys(latest.current.values).length) sessionStorage.setItem(key, JSON.stringify(latest.current));
+      } catch {}
+    };
+    let id = 0;
+    try {
+      const kept = sessionStorage.getItem(key);
+      if (kept) {
+        const { values: v, step: n } = JSON.parse(kept);
+        id = requestAnimationFrame(() => {
+          sessionStorage.removeItem(key);
+          restored.current = true;
+          setValues(v);
+          setStep(n);
+        });
+      }
+    } catch {}
+    addEventListener(languageEvent, save);
+    return () => {
+      cancelAnimationFrame(id);
+      removeEventListener(languageEvent, save);
+    };
+  }, []);
 
   // Move focus to the outcome.
   useEffect(() => {
@@ -67,7 +104,8 @@ export function useEnquiry(initial: Record<string, string>) {
     setValues(initial);
     setErrors({});
     setStatus("idle");
+    setStep(firstStep);
   };
 
-  return { values, set, errors, setErrors, status, send, reset, form, result };
+  return { values, set, step, setStep, restored, errors, setErrors, status, send, reset, form, result };
 }

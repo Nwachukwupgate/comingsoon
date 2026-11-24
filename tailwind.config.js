@@ -27,7 +27,8 @@ module.exports = {
         muted: "rgb(var(--c-muted) / <alpha-value>)",
       },
       fontFamily: {
-        site: ["var(--font-manrope)", "ui-sans-serif", "system-ui", "sans-serif"],
+        arabic: ["var(--font-arabic)", "system-ui", "sans-serif"],
+        site: ["var(--font-manrope)", "var(--font-arabic)", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       maxWidth: { site: "78rem" },
 

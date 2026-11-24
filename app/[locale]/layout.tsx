@@ -5,12 +5,13 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import Footer from "@/components/layout/Footer";
+import LanguageOffer from "@/components/layout/LanguageOffer";
 import Header from "@/components/layout/Header";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import RevealObserver from "@/components/ui/RevealObserver";
 import StructuredData from "@/components/layout/StructuredData";
 import { dirOf, isLocale, locales } from "@/i18n/config";
-import { manrope } from "@/lib/fonts";
+import { arabic, manrope } from "@/lib/fonts";
 
 export const viewport: Viewport = { themeColor: "#062450" };
 export const generateStaticParams = () => locales.map((locale) => ({ locale }));
@@ -26,7 +27,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const { nav, common, whatsapp, services, form } = await getMessages();
 
   return (
-    <html lang={locale} dir={dirOf(locale)} className={manrope.variable}>
+    <html lang={locale} dir={dirOf(locale)} className={`${manrope.variable} ${arabic.variable}`}>
       <body>
         <NextIntlClientProvider messages={{ nav, common, whatsapp, services, form }}>
           <a
@@ -41,6 +42,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           </main>
           <Footer />
           <WhatsAppButton />
+          <LanguageOffer />
           <RevealObserver />
         </NextIntlClientProvider>
         <StructuredData />

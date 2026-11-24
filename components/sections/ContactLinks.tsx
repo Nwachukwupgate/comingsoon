@@ -45,9 +45,9 @@ export default function ContactLinks({ page, address = false }: { page: PageKey;
           <div>
             <span className="block text-base text-muted">{t("office")}</span>
             <address className="py-1 font-bold not-italic">
-              {site.address.line1}
+              {t("addressLine1")}
               <br />
-              {site.address.line2}
+              {t("addressLine2")}
             </address>
           </div>
         </li>

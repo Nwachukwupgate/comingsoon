@@ -127,3 +127,16 @@
     }
   }
 }
+
+/* Arabic. Letters join, so spacing between them must never change, and marks
+   above and below the line need more height. */
+:lang(ar) { letter-spacing: 0 !important; }
+:lang(ar):is(h1, h2, h3) { line-height: 1.32 !important; }
+:lang(ar).lead { line-height: 1.85; }
+:lang(ar).h-display { font-size: clamp(2.35rem, 1.45rem + 3.6vw, 4.25rem); }
+/* Written out because --font-manrope ends in an Arial fallback, which has its own
+   Arabic letters and would be used before the Arabic font. */
+html:lang(ar) body { font-family: "Manrope", "IBM Plex Sans Arabic", system-ui, sans-serif; line-height: 1.75; }
+html:lang(ar) { font-size: 106.25%; }
+html:lang(ar) :is(h1, h2) { font-weight: 700; }
+:lang(ar).text-link { text-underline-offset: 10px; }

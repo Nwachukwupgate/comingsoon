@@ -64,9 +64,9 @@ export default function Footer() {
             <li className={row}>
               <MapPin aria-hidden="true" className={icon} />
               <address className="py-1.5 not-italic text-white/80">
-                {site.address.line1}
+                {c("addressLine1")}
                 <br />
-                {site.address.line2}
+                {c("addressLine2")}
               </address>
             </li>
           </ul>

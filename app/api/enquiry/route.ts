@@ -51,7 +51,8 @@ export async function POST(request: Request) {
     "Message:",
     v.message || "(none)",
     "",
-    `Sent from: ${v.page || "unknown page"} (${v.locale})`,
+    `Sent from: ${v.page || "unknown page"}`,
+    `Site language: ${v.locale === "ar" ? "Arabic" : "English"}`,
   ];
 
   try {

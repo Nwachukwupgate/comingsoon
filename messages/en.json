@@ -54,6 +54,9 @@
     "phone": "Phone",
     "stepOf": "Step {number}",
     "disclaimer": "Please note",
+    "addressLine1": "Office 408, Elite Business Center",
+    "addressLine2": "Al Barsha 1, Dubai, UAE",
+    "switchLanguage": "Change language",
     "opensNewTab": "opens in a new tab",
     "floatingWhatsapp": "Chat with Upsworth PMS on WhatsApp"
   },

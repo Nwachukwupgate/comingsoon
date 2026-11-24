@@ -35,7 +35,7 @@ export default function CountUp({ value, suffix = "" }: { value: number; suffix?
 
   return (
     <>
-      <span ref={ref} aria-hidden="true">{`${value}${suffix}`}</span>
+      <span ref={ref} dir="ltr" aria-hidden="true" className="inline-block">{`${value}${suffix}`}</span>
       <span className="sr-only">{`${value}${suffix}`}</span>
     </>
   );

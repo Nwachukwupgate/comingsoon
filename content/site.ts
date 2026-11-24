@@ -27,8 +27,7 @@ export const site = {
   ],
   whatsapp: "971547510211",
   address: {
-    line1: "Office 408, Elite Business Center",
-    line2: "Al Barsha 1, Dubai, UAE",
+    // The address shown on pages is in messages/<locale>.json (common.addressLine1).
     street: "Office 408, Elite Business Center, Al Barsha 1",
     city: "Dubai",
     country: "AE",

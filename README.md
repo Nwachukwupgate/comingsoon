@@ -109,12 +109,30 @@ under 1.5 MB each. Update the matching still image so phones show the same thing
 - GSAP ScrollTrigger drives the pinned scenes. The process timelines use a small
   scroll hook (`lib/useScrollProgress.ts`), so phones never download GSAP.
 
-## Add a language
+## Languages
 
-1. Copy `messages/en.json` to, for example, `messages/ar.json` and translate it.
-2. Add `"ar"` to `locales` in `i18n/config.ts`. Right-to-left is set automatically.
-3. Load an Arabic font in `lib/fonts.ts` (Manrope has no Arabic letters).
-4. Check the layout at `/v2/ar`, and add a language switch to the header.
+English and Arabic share the same addresses. The header button saves the
+visitor's choice in a cookie (`upsworth-lang`, one year) and reloads the page;
+`next.config.ts` then serves that language's built page. Without a cookie,
+visitors get English. Arabic browsers are offered Arabic once, never switched
+automatically.
+
+Because the address is the same, search engines only see English. To have
+Arabic pages found on Google, give Arabic its own addresses and `hreflang` tags.
+
+To change wording, edit `messages/en.json` and `messages/ar.json`. Both must have
+the same keys.
+
+To add a language:
+
+1. Copy `messages/en.json` to `messages/<code>.json` and translate it.
+2. Add the code and its own name in `i18n/config.ts`. Right-to-left is automatic.
+3. Optionally add an offer in `content/language.ts`.
+4. Add a font in `lib/fonts.ts` if Manrope lacks the letters, with typography
+   rules in `app/globals.css` (see "Arabic").
+
+The switcher cycles through the list, so with three or more languages it should
+become a menu.
 
 ## Deploy
 

@@ -8,6 +8,7 @@ import Logo from "@/components/ui/Logo";
 import SiteLink from "@/components/ui/SiteLink";
 import { services, servicePath } from "@/content/services";
 import { features } from "@/content/site";
+import LanguageSwitch from "./LanguageSwitch";
 import { usePageKey } from "./usePageKey";
 
 const serviceIcons = { project: "hardhat", logistics: "truck", realEstate: "building", sourcing: "package" };
@@ -72,12 +73,12 @@ export default function Header() {
         scrolled || menu ? "shadow-[0_1px_0_rgb(var(--c-line))]" : ""
       }`}
     >
-      <div className="wrap flex h-full items-center justify-between gap-6">
+      <div className="wrap flex h-full items-center justify-between gap-3 lg:gap-6">
         <SiteLink href="/" aria-label={t("homeLabel")} onClick={close}>
-          <Logo eager className="h-12 sm:h-14" />
+          <Logo eager className="h-[2rem] min-[360px]:h-9 min-[390px]:h-11 sm:h-14" />
         </SiteLink>
 
-        <nav aria-label={t("main")} className="hidden items-center gap-8 lg:flex">
+        <nav aria-label={t("main")} className="hidden items-center gap-6 lg:flex xl:gap-8">
           <div
             ref={dropRef}
             className="relative"
@@ -133,22 +134,26 @@ export default function Header() {
               {t("investorLogin")}
             </a>
           )}
-          <SiteLink href="/contact" className="btn btn-primary !min-h-[2.75rem] !px-5">
+          <LanguageSwitch />
+          <SiteLink href="/contact" className="btn btn-primary -ms-4 !min-h-[2.75rem] !px-5">
             {t("talk")}
           </SiteLink>
         </nav>
 
-        <button
-          ref={menuButton}
-          type="button"
-          className="-me-2 grid h-12 w-12 place-items-center lg:hidden"
-          aria-expanded={menu}
-          aria-controls="mobile-menu"
-          aria-label={menu ? t("closeMenu") : t("openMenu")}
-          onClick={() => setMenu(!menu)}
-        >
-          {menu ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
-        </button>
+        <div className="flex shrink-0 items-center gap-1 min-[360px]:gap-2 lg:hidden">
+          <LanguageSwitch />
+          <button
+            ref={menuButton}
+            type="button"
+            className="-me-2 grid h-12 w-12 place-items-center"
+            aria-expanded={menu}
+            aria-controls="mobile-menu"
+            aria-label={menu ? t("closeMenu") : t("openMenu")}
+            onClick={() => setMenu(!menu)}
+          >
+            {menu ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+          </button>
+        </div>
       </div>
 
       <div

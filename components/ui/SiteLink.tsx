@@ -1,10 +1,8 @@
 import Link from "next/link";
-import { useLocale } from "next-intl";
 import type { ComponentProps } from "react";
-import { localHref } from "@/lib/href";
+import { siteHref } from "@/lib/href";
 
-/** Internal link. Give it the plain path ("/about"); it adds /v2 and language. */
+/** Internal link. Give it the plain path ("/about"); it adds /v2 until launch. */
 export default function SiteLink({ href, ...rest }: Omit<ComponentProps<typeof Link>, "href"> & { href: string }) {
-  const locale = useLocale();
-  return <Link href={localHref(locale, href)} {...rest} />;
+  return <Link href={siteHref(href)} {...rest} />;
 }

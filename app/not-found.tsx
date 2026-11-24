@@ -9,7 +9,7 @@ export const metadata = { title: "Page not found | Upsworth PMS", robots: { inde
 /** Addresses outside the marketing site, e.g. /something. */
 export default function RootNotFound() {
   return (
-    <html lang={defaultLocale} className={manrope.variable}>
+    <html lang={defaultLocale} className={manrope.variable} style={{ "--font-arabic": "sans-serif" } as React.CSSProperties}>
       <body>
         <main className="grid min-h-screen place-items-center bg-mist px-6 text-center">
           <div>

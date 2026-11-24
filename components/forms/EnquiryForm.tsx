@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, type FormEvent } from "react";
 import { detailErrors, detailFields, serviceOptions, type ServiceOption } from "@/lib/enquiry";
 import { ContactFields, Field, Honeypot, RadioCards } from "./fields";
 import { Failed, Sent } from "./Outcome";
@@ -11,8 +11,10 @@ import { useEnquiry } from "./useEnquiry";
     opens on step 2. /contact?service=logistics does the same. */
 export default function EnquiryForm({ service }: { service?: ServiceOption }) {
   const t = useTranslations("form");
-  const { values, set, errors, setErrors, status, send, reset, form, result } = useEnquiry(service ? { service } : {});
-  const [step, setStep] = useState(service ? 1 : 0);
+  const { values, set, step, setStep, restored, errors, setErrors, status, send, reset, form, result } = useEnquiry(
+    service ? { service } : {},
+    service ? 1 : 0,
+  );
   const heading = useRef<HTMLHeadingElement>(null);
   const moved = useRef(false);
   const steps = t.raw("steps") as string[];
@@ -24,6 +26,7 @@ export default function EnquiryForm({ service }: { service?: ServiceOption }) {
     const wanted = new URLSearchParams(location.search).get("service");
     if (!wanted || !(serviceOptions as readonly string[]).includes(wanted)) return;
     const id = requestAnimationFrame(() => {
+      if (restored.current) return; // Answers kept from before a language change.
       set("service", wanted);
       setStep(1);
     });
@@ -66,7 +69,6 @@ export default function EnquiryForm({ service }: { service?: ServiceOption }) {
         onAgain={() => {
           reset();
           moved.current = false;
-          setStep(service ? 1 : 0);
         }}
       />
     );
