@@ -1,0 +1,762 @@
+{
+  "seo": {
+    "home": {
+      "title": "Upsworth PMS | Bridging the Gap in Project Execution",
+      "description": "Expert third party inspection, logistics, investment management and sourcing. Upsworth Project Management Services, Dubai, UAE."
+    },
+    "about": {
+      "title": "About Upsworth PMS | Project Management Services in Dubai",
+      "description": "Upsworth PMS coordinates between contractors, clients, vendors and suppliers so projects are completed on time, within budget and to the right standard."
+    },
+    "contact": {
+      "title": "Contact Upsworth PMS | Al Barsha 1, Dubai",
+      "description": "Talk to Upsworth PMS by phone, WhatsApp, email or enquiry form. Office 408, Elite Business Center, Al Barsha 1, Dubai, UAE."
+    },
+    "project": {
+      "title": "Project Management Services | Upsworth PMS",
+      "description": "Third party construction inspection, logistics support, property maintenance and acquisition, and products securing and handling in Dubai."
+    },
+    "logistics": {
+      "title": "Logistics Investment | Upsworth PMS",
+      "description": "Turning capital into working fleets. Cargo trucks owned by the investor, matched to vetted logistics partners and managed day to day by Upsworth PMS."
+    },
+    "realEstate": {
+      "title": "Real Estate Investment and Property Management | Upsworth PMS",
+      "description": "Off plan and secondary market purchases handled from search to keys, with full property management afterwards, through one point of contact."
+    },
+    "sourcing": {
+      "title": "Sourcing and Shipping | Upsworth PMS",
+      "description": "Upsworth PMS sources, buys and ships equipment, vehicles and other goods on request, with one point of contact from quotation to delivery."
+    }
+  },
+  "nav": {
+    "skip": "Skip to content",
+    "home": "Home",
+    "homeLabel": "Upsworth PMS home",
+    "main": "Main navigation",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "talk": "Talk to Us",
+    "investorLogin": "Investor Login",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "common": {
+    "exploreServices": "Explore Services",
+    "talkToUs": "Talk to Us",
+    "learnMore": "Learn more",
+    "makeEnquiry": "Make an enquiry",
+    "call": "Call",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "office": "Office",
+    "phone": "Phone",
+    "stepOf": "Step {number}",
+    "disclaimer": "Please note",
+    "opensNewTab": "opens in a new tab",
+    "floatingWhatsapp": "Chat with Upsworth PMS on WhatsApp"
+  },
+  "whatsapp": {
+    "home": "Hi, I'd like to know more about Upsworth PMS.",
+    "about": "Hi, I'd like to know more about Upsworth PMS.",
+    "contact": "Hi, I'd like to talk to the Upsworth PMS team.",
+    "project": "Hi, I'm interested in project management services.",
+    "logistics": "Hi, I'm interested in logistics investment.",
+    "realEstate": "Hi, I'm interested in real estate investment.",
+    "sourcing": "Hi, I'm interested in sourcing and shipping."
+  },
+  "services": {
+    "project": {
+      "name": "Project Management Services",
+      "short": "Project Management",
+      "line": "Third party inspection, logistics support, property services and secure handling of project supplies."
+    },
+    "logistics": {
+      "name": "Logistics Investment",
+      "short": "Logistics Investment",
+      "line": "Your capital buys real, registered trucks. We match them to vetted partners and manage them day to day."
+    },
+    "realEstate": {
+      "name": "Real Estate Investment",
+      "short": "Real Estate",
+      "line": "Off plan and ready properties, selected with care, bought from start to finish and fully looked after."
+    },
+    "sourcing": {
+      "name": "Sourcing & Shipping",
+      "short": "Sourcing & Shipping",
+      "line": "Equipment, vehicles and special orders, sourced, purchased and delivered through one point of contact."
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Bridging the Gap in Project Execution",
+      "lead": "Expert third party inspection, logistics, investment management and sourcing.",
+      "secondTitle": "On time, within budget and to the right standard.",
+      "secondLead": "Upsworth coordinates between contractors, clients, vendors and suppliers, so projects keep running smoothly.",
+      "imageAlt": "Architectural model of a Dubai skyline, joined by a bridge to a cargo port"
+    },
+    "about": {
+      "title": "We help keep projects running smoothly.",
+      "body": "Upsworth coordinates between contractors, clients, vendors and suppliers so projects are completed on time, within budget and to the right standard. We also manage logistics and real estate investments, and source and ship equipment and vehicles for clients.",
+      "link": "About Upsworth"
+    },
+    "services": {
+      "title": "Four services, one point of contact",
+      "lead": "Work with us on a project, an investment or a sourcing request."
+    },
+    "trust": {
+      "title": "Why Upsworth",
+      "items": [
+        {
+          "icon": "clock",
+          "title": "5+ years",
+          "text": "Of experience, based in Dubai."
+        },
+        {
+          "icon": "key",
+          "title": "Assets in your name",
+          "text": "Investors keep ownership of each truck, during and after the contract term."
+        },
+        {
+          "icon": "report",
+          "title": "Monthly reporting",
+          "text": "Fleet income, costs, net distribution and notes."
+        },
+        {
+          "icon": "contact",
+          "title": "One point of contact",
+          "text": "Suppliers, paperwork and updates handled for you."
+        },
+        {
+          "icon": "shield",
+          "title": "Independent oversight",
+          "text": "Third party data on project health, without conflict of interest."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Tell us what you are planning.",
+      "body": "A project, an investment or something you need sourced. We will start with a consultation."
+    }
+  },
+  "themes": [
+    {
+      "icon": "shield",
+      "title": "Managing project risk",
+      "text": "Rigorous third party inspections find small issues before they turn into costly delays."
+    },
+    {
+      "icon": "route",
+      "title": "Streamlining supply chains",
+      "text": "Raw material pipelines are coordinated to forecast needs and eliminate shortages."
+    },
+    {
+      "icon": "chart",
+      "title": "Protecting your bottom line",
+      "text": "Timelines, budgets and quality control are monitored from consultation to closure."
+    }
+  ],
+  "stats": {
+    "title": "Experience you can ask about",
+    "lead": "Based in Al Barsha 1, Dubai, serving contractors, clients, enterprise companies and investors.",
+    "labels": {
+      "years": "Years of experience",
+      "projects": "Projects supported",
+      "trucks": "Trucks managed",
+      "properties": "Properties managed"
+    }
+  },
+  "serve": {
+    "title": "Who we serve",
+    "lead": "Four kinds of client, across four industries.",
+    "clientsTitle": "Clients",
+    "clients": [
+      "Contractors",
+      "Independent Clients",
+      "Enterprise Companies",
+      "Investors"
+    ],
+    "industriesTitle": "Industries",
+    "industries": [
+      {
+        "icon": "building",
+        "name": "Commercial and Residential Construction"
+      },
+      {
+        "icon": "truck",
+        "name": "Infrastructure and Logistics"
+      },
+      {
+        "icon": "factory",
+        "name": "Manufacturing and Supply Chains"
+      },
+      {
+        "icon": "chart",
+        "name": "Logistics and Real Estate Investment"
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "What clients say"
+  },
+  "thirdParty": {
+    "title": "Why third party management",
+    "lead": "An independent party has one job: to tell you how the project is really going.",
+    "items": [
+      {
+        "icon": "scale",
+        "title": "No conflict of interest",
+        "text": "Oversight sits apart from the parties doing the work."
+      },
+      {
+        "icon": "file",
+        "title": "Reduced compliance risk",
+        "text": "Strict SLAs (Service Level Agreements) set out what is expected and when."
+      },
+      {
+        "icon": "chart",
+        "title": "Independent data",
+        "text": "Stakeholders get uncompromised data on project health."
+      }
+    ]
+  },
+  "project": {
+    "title": "Project Management Services",
+    "lead": "Independent inspection, coordination and control, from consultation to closure.",
+    "imageAlt": "Architectural model of a construction site with a tower crane",
+    "subTitle": "What we take care of",
+    "sub": [
+      {
+        "icon": "inspect",
+        "title": "General Construction Inspection",
+        "text": "Rigorous third party site inspections to ensure projects meet safety, structural and quality standards before small issues turn into costly delays."
+      },
+      {
+        "icon": "truck",
+        "title": "Logistics Support Services",
+        "text": "Complete coordination of transportation, material storage and distribution, keeping suppliers and contractors aligned throughout the project."
+      },
+      {
+        "icon": "wrench",
+        "title": "Property Maintenance & Acquisition",
+        "text": "Complete property maintenance support and guidance through property buying and acquisition."
+      },
+      {
+        "icon": "package",
+        "title": "Products Securing & Handling",
+        "text": "Safe handling and secure storage of valuable materials and project supplies from delivery to installation."
+      }
+    ],
+    "ecosystem": {
+      "title": "The central link between every party",
+      "lead": "Upsworth coordinates between contractors, vendors and suppliers, so projects keep running smoothly.",
+      "centre": "Upsworth",
+      "centreSub": "The central link",
+      "nodes": [
+        {
+          "icon": "hardhat",
+          "title": "Contractors",
+          "text": "Monitoring timelines, budgets and quality control."
+        },
+        {
+          "icon": "package",
+          "title": "Vendors",
+          "text": "Ensuring specified equipment and services are delivered precisely to project requirements."
+        },
+        {
+          "icon": "factory",
+          "title": "Suppliers",
+          "text": "Coordinating raw material pipelines to forecast needs and eliminate shortages."
+        }
+      ]
+    },
+    "process": {
+      "title": "How a project runs",
+      "lead": "Five steps, from first consultation to handover.",
+      "steps": [
+        {
+          "title": "Consultation",
+          "text": "Understanding project needs, bottlenecks, risks and oversight requirements."
+        },
+        {
+          "title": "Customized Proposal",
+          "text": "A dedicated service framework, budget management plan and risk mitigation strategy."
+        },
+        {
+          "title": "Precision Execution",
+          "text": "Resource allocation, third party coordination and active quality control."
+        },
+        {
+          "title": "Real Time Reporting",
+          "text": "Regular updates and documentation keeping all stakeholders aligned."
+        },
+        {
+          "title": "Project Closure",
+          "text": "Final evaluation, quality checks and client satisfaction handover."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Put independent oversight on your project.",
+      "body": "Tell us about the project, the bottlenecks and the risks you want covered."
+    }
+  },
+  "logistics": {
+    "title": "Turning Capital into Working Fleets",
+    "lead": "Upsworth uses investor capital to source and buy approved cargo trucks, matches each one to a vetted logistics partner with a confirmed operating requirement, and manages it day to day.",
+    "imageAlt": "Scale model of a fleet of cargo trucks",
+    "keyTitle": "How the model is built",
+    "keyPoints": [
+      {
+        "icon": "truck",
+        "title": "Asset backed",
+        "text": "Capital goes into real, registered trucks."
+      },
+      {
+        "icon": "handshake",
+        "title": "Requirement led",
+        "text": "Trucks are bought against confirmed partner demand."
+      },
+      {
+        "icon": "route",
+        "title": "Performance based",
+        "text": "Income comes from trips actually completed."
+      },
+      {
+        "icon": "layers",
+        "title": "Scalable",
+        "text": "Start with one or two trucks and grow."
+      }
+    ],
+    "ownership": {
+      "title": "The trucks are yours",
+      "body": "The investor keeps ownership of each truck during and after the contract term. Contract renewal is agreed by all parties."
+    },
+    "story": {
+      "title": "Your investment, on the road",
+      "lead": "The investment earns from real transport activity while you keep full visibility.",
+      "points": [
+        "Sourced, bought and registered, with ownership in your name.",
+        "Matched to a vetted logistics partner under a documented operating agreement.",
+        "Trips, utilization, maintenance and insurance are tracked.",
+        "Regular reports on income, costs and net distribution."
+      ],
+      "modelAlt": "Scale model of a cargo truck"
+    },
+    "process": {
+      "title": "How it works",
+      "lead": "Six steps from first conversation to regular reporting.",
+      "steps": [
+        {
+          "title": "Consultation & Capital",
+          "text": "Goals and capital are confirmed. Capital sets the fleet size."
+        },
+        {
+          "title": "Truck Selection",
+          "text": "We agree the mix (dry box, chiller, van or heavy duty) to match live partner demand."
+        },
+        {
+          "title": "Purchase & Registration",
+          "text": "Upsworth sources, buys and registers the trucks. You keep ownership."
+        },
+        {
+          "title": "Partner Matching",
+          "text": "Each truck is allocated to a vetted logistics partner under a documented operating agreement."
+        },
+        {
+          "title": "Operations & Tracking",
+          "text": "Trucks run contracted routes. Trips, utilization, maintenance and insurance are tracked."
+        },
+        {
+          "title": "Reporting & Income",
+          "text": "Regular reports on income, costs and net distribution."
+        }
+      ]
+    },
+    "portfolio": {
+      "title": "Portfolio management",
+      "lead": "Six areas we manage for your fleet.",
+      "items": [
+        {
+          "icon": "file",
+          "title": "Asset Control",
+          "text": "Ownership records, registration, insurance and specs."
+        },
+        {
+          "icon": "handshake",
+          "title": "Partner Agreements",
+          "text": "Allocation, rates, payment cycle and responsibilities."
+        },
+        {
+          "icon": "pin",
+          "title": "Utilization Tracking",
+          "text": "Trip records, GPS tracking where available, and downtime."
+        },
+        {
+          "icon": "wrench",
+          "title": "Maintenance Discipline",
+          "text": "Preventive schedules and an agreed reserve policy."
+        },
+        {
+          "icon": "report",
+          "title": "Monthly Reporting",
+          "text": "Fleet income, costs, net distribution and notes."
+        },
+        {
+          "icon": "layers",
+          "title": "Scale Decisions",
+          "text": "Distribute, reinvest or add trucks based on performance."
+        }
+      ]
+    },
+    "earns": {
+      "title": "How each truck earns",
+      "lead": "Income follows the work the truck actually does.",
+      "chain": [
+        "Contracted demand",
+        "Trips completed",
+        "Gross revenue"
+      ],
+      "minus": "Operating costs",
+      "equals": "Net income",
+      "then": "then",
+      "less": "minus",
+      "is": "equals"
+    },
+    "disclaimer": "Income is activity based: higher utilization can improve it, while downtime, repairs or weak routes can reduce it. Returns are not fixed or guaranteed.",
+    "form": {
+      "title": "Talk to us about logistics investment",
+      "body": "Share your goals and we will arrange a consultation."
+    },
+    "cta": {
+      "title": "Discuss your first truck, or your next one.",
+      "body": "Goals, capital and fleet size are agreed with you before anything is bought."
+    }
+  },
+  "realEstate": {
+    "title": "Properties Selected for Strong Returns",
+    "lead": "Upsworth studies the market, shortlists opportunities and handles the purchase from start to finish, choosing properties with strong potential for rental income and capital growth.",
+    "imageAlt": "Architectural model of residential towers",
+    "compare": {
+      "title": "Two ways to buy",
+      "lead": "We help you decide which route suits your plans.",
+      "options": [
+        {
+          "title": "Off Plan Purchases",
+          "text": "New projects bought from the developer, often on staged payment plans.",
+          "checksTitle": "Reviewed before we recommend a unit",
+          "checks": [
+            "The developer's track record",
+            "Payment plan",
+            "Handover date",
+            "Location"
+          ]
+        },
+        {
+          "title": "Secondary Market",
+          "text": "Ready properties that can be rented or resold sooner.",
+          "checksTitle": "Checked before we negotiate for you",
+          "checks": [
+            "Asking prices compared with recent sales",
+            "Rental demand",
+            "Condition",
+            "Service charges"
+          ]
+        }
+      ]
+    },
+    "checks": {
+      "title": "What we check before you buy",
+      "items": [
+        {
+          "icon": "pin",
+          "title": "Location and demand"
+        },
+        {
+          "icon": "scale",
+          "title": "Price vs market value"
+        },
+        {
+          "icon": "key",
+          "title": "Rental potential"
+        },
+        {
+          "icon": "inspect",
+          "title": "Developer and build quality"
+        }
+      ],
+      "keysTitle": "From search to keys",
+      "keysText": "Viewings, price negotiation and paperwork, through to handover."
+    },
+    "story": {
+      "title": "From shortlist to handover",
+      "lead": "We study the market, shortlist opportunities and handle the purchase from start to finish.",
+      "points": [
+        "Location and demand, studied first.",
+        "Asking price compared with market value.",
+        "Viewings, negotiation and paperwork handled for you.",
+        "One point of contact, from purchase to rental income."
+      ],
+      "modelAlt": "Architectural model of a residential building"
+    },
+    "management": {
+      "title": "Your Property, Fully Looked After",
+      "lead": "Property management through one point of contact.",
+      "items": [
+        {
+          "icon": "users",
+          "title": "Tenant Sourcing"
+        },
+        {
+          "icon": "wallet",
+          "title": "Rent Collection"
+        },
+        {
+          "icon": "wrench",
+          "title": "Maintenance & Repairs"
+        },
+        {
+          "icon": "inspect",
+          "title": "Property Inspections"
+        },
+        {
+          "icon": "report",
+          "title": "Owner Reporting"
+        },
+        {
+          "icon": "tag",
+          "title": "Resale Support"
+        }
+      ]
+    },
+    "journey": {
+      "title": "From purchase to income",
+      "lead": "Five stages, one point of contact.",
+      "steps": [
+        {
+          "title": "Consult & plan"
+        },
+        {
+          "title": "Select property"
+        },
+        {
+          "title": "Purchase & handover"
+        },
+        {
+          "title": "Manage & maintain"
+        },
+        {
+          "title": "Rental income"
+        }
+      ]
+    },
+    "disclaimer": "Rental income and property values depend on market conditions.",
+    "form": {
+      "title": "Talk to us about real estate",
+      "body": "Tell us whether you are buying off plan, buying a ready property, or already own a property that needs managing."
+    },
+    "cta": {
+      "title": "Tell us what you would like to own.",
+      "body": "We will start with a consultation and a plan."
+    }
+  },
+  "sourcing": {
+    "title": "Sourced, Purchased and Delivered",
+    "lead": "Upsworth sources, buys and ships equipment, vehicles and other goods on request, handling suppliers, payment, documentation and delivery through one point of contact.",
+    "imageAlt": "Scale model of a container port with a cargo ship",
+    "what": {
+      "title": "What we source",
+      "items": [
+        {
+          "icon": "cog",
+          "title": "Equipment",
+          "text": "Construction, industrial and project equipment to spec."
+        },
+        {
+          "icon": "truck",
+          "title": "Vehicles",
+          "text": "Trucks, vans, cars and heavy duty units, new or used."
+        },
+        {
+          "icon": "package",
+          "title": "Client Requests",
+          "text": "Materials, parts and special orders."
+        }
+      ]
+    },
+    "process": {
+      "title": "How it works",
+      "lead": "Four steps from your request to delivery.",
+      "steps": [
+        {
+          "title": "Your request",
+          "text": "Item, spec, quantity and destination."
+        },
+        {
+          "title": "Sourcing & quotation",
+          "text": "We find suppliers and send you a quotation."
+        },
+        {
+          "title": "Purchase & inspection",
+          "text": "We buy the item and inspect it."
+        },
+        {
+          "title": "Shipping & delivery",
+          "text": "Freight, paperwork and delivery."
+        }
+      ]
+    },
+    "form": {
+      "title": "Request a quotation",
+      "body": "Tell us what you need and where it should go."
+    },
+    "cta": {
+      "title": "Need something sourced and shipped?",
+      "body": "Send the item, spec, quantity and destination. We handle the rest through one point of contact."
+    }
+  },
+  "about": {
+    "title": "The link between plan and delivery",
+    "lead": "Upsworth PMS is a project management services company based in Dubai, with 5+ years of experience in inspection, logistics, investment management and sourcing.",
+    "imageAlt": "Architectural model of the Dubai skyline",
+    "story": {
+      "title": "What we do",
+      "body": [
+        "Upsworth helps keep projects running smoothly. We coordinate between contractors, clients, vendors and suppliers so projects are completed on time, within budget and to the right standard.",
+        "We also manage logistics and real estate investments, and source and ship equipment and vehicles for clients."
+      ],
+      "yearsLabel": "Years of experience"
+    },
+    "themesTitle": "Three themes run through our work",
+    "office": {
+      "title": "Visit our office",
+      "body": "We are in Al Barsha 1, Dubai."
+    },
+    "cta": {
+      "title": "Start with a conversation.",
+      "body": "Call, message or send an enquiry, and we will arrange a consultation."
+    }
+  },
+  "contact": {
+    "title": "Talk to us",
+    "lead": "Send an enquiry, or reach us directly by phone, WhatsApp or email.",
+    "formTitle": "Send an enquiry",
+    "directTitle": "Reach us directly",
+    "mapTitle": "Map showing Elite Business Center, Al Barsha 1, Dubai",
+    "directions": "Get directions"
+  },
+  "cta": {
+    "enquire": "Send an enquiry",
+    "whatsapp": "Message on WhatsApp"
+  },
+  "footer": {
+    "tagline": "Bridging the Gap in Project Execution",
+    "services": "Services",
+    "company": "Company",
+    "contact": "Contact",
+    "rights": "© {year} Upsworth Project Management Services.",
+    "credit": "Designed & built by"
+  },
+  "notFound": {
+    "title": "This page is not on the route",
+    "body": "The address may have changed, or the link may be incomplete.",
+    "home": "Back to home",
+    "contact": "Talk to us"
+  },
+  "form": {
+    "progress": "Step {current} of {total}",
+    "steps": [
+      "Service",
+      "Details",
+      "Contact"
+    ],
+    "next": "Continue",
+    "back": "Back",
+    "submit": "Send enquiry",
+    "submitSourcing": "Send request",
+    "sending": "Sending",
+    "optional": "optional",
+    "honeypot": "Leave this field empty",
+    "service": {
+      "legend": "What can we help with?",
+      "project": "Project Management",
+      "logistics": "Logistics Investment",
+      "realEstate": "Real Estate",
+      "sourcing": "Sourcing & Shipping",
+      "other": "Other"
+    },
+    "details": {
+      "project": "About your project",
+      "logistics": "About your investment",
+      "realEstate": "About your property plans",
+      "sourcing": "About your request",
+      "other": "How can we help?"
+    },
+    "fields": {
+      "projectNeed": "What do you need?",
+      "projectLocation": "Project location",
+      "projectStage": "Project stage",
+      "budget": "Approximate budget (AED)",
+      "truckType": "Truck type of interest",
+      "timeline": "When would you like to start?",
+      "propertyGoal": "What are you looking for?",
+      "area": "Preferred area",
+      "item": "Item",
+      "specification": "Specification",
+      "quantity": "Quantity",
+      "destination": "Destination",
+      "subject": "Subject",
+      "name": "Full name",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Message",
+      "method": "Preferred contact method"
+    },
+    "hints": {
+      "budget": "A rough figure or range is fine.",
+      "phone": "Include the country code, for example +971 50 123 4567. UAE numbers starting with 0 also work.",
+      "specification": "Make, model, size, condition or any other detail."
+    },
+    "options": {
+      "choose": "Choose an option",
+      "inspection": "General Construction Inspection",
+      "support": "Logistics Support Services",
+      "maintenance": "Property Maintenance & Acquisition",
+      "handling": "Products Securing & Handling",
+      "notSure": "Not sure yet",
+      "planning": "Planning",
+      "underway": "Under way",
+      "closing": "Near completion",
+      "dryBox": "Dry box",
+      "chiller": "Chiller",
+      "van": "Van",
+      "heavyDuty": "Heavy duty",
+      "offPlan": "Off plan purchase",
+      "secondary": "Secondary market purchase",
+      "manage": "Property management",
+      "resale": "Resale support",
+      "call": "Call",
+      "whatsapp": "WhatsApp",
+      "email": "Email"
+    },
+    "errors": {
+      "summary": "Please check the highlighted fields.",
+      "required": "Please fill in this field.",
+      "service": "Please choose a service.",
+      "email": "Please enter a valid email address.",
+      "phone": "Please enter a valid phone number with the country code.",
+      "tooLong": "Please shorten this entry.",
+      "method": "Please choose how we should contact you."
+    },
+    "success": {
+      "title": "Thank you. Your enquiry has been sent.",
+      "body": "We will reply using the contact method you chose.",
+      "again": "Send another enquiry"
+    },
+    "failure": {
+      "title": "Your enquiry was not sent.",
+      "body": "Your answers are still here. Please try again, or reach us on WhatsApp or by email."
+    }
+  }
+}
