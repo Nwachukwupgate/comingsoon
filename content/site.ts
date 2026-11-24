@@ -39,8 +39,8 @@ export const site = {
     { name: "Facebook", url: "https://www.facebook.com/share/19grDZyaam/" },
     { name: "LinkedIn", url: "https://www.linkedin.com/in/upsworth-project-management-services-a25667350" },
   ],
-  /** Footer credit. TODO: replace with the studio's name, and a URL if wanted. */
-  credit: { name: "Studio name", url: "" },
+  /** Footer credit, "Designed & built by ...". Hidden while `name` is empty. */
+  credit: { name: "" as string, url: "" as string },
 } as const;
 
 export const features = {

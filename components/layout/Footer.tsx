@@ -75,14 +75,16 @@ export default function Footer() {
       <div className="border-t border-white/15">
         <div className="wrap flex flex-col gap-2 py-6 pe-24 text-sm text-white/70 sm:flex-row sm:justify-between">
           <p>{t("rights", { year: String(new Date().getFullYear()) })}</p>
-          <p>
-            {t("credit")}{" "}
-            {site.credit.url ? (
-              <a href={site.credit.url} className="underline underline-offset-4">{site.credit.name}</a>
-            ) : (
-              site.credit.name
-            )}
-          </p>
+          {site.credit.name && (
+            <p>
+              {t("credit")}{" "}
+              {site.credit.url ? (
+                <a href={site.credit.url} className="underline underline-offset-4">{site.credit.name}</a>
+              ) : (
+                site.credit.name
+              )}
+            </p>
+          )}
         </div>
       </div>
     </footer>
