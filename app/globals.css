@@ -97,3 +97,33 @@
 @keyframes pier { from { top: 0; } to { top: calc(100% - 13px); } }
 @media (max-width: 1023px) { .pier-dot { display: none; } }
 @media (prefers-reduced-motion: reduce) { .pier-dot { top: calc(50% - 6px); animation: none !important; } }
+
+/* Service cards on phones. Each card fills most of the screen. On screens tall
+   enough to show a whole card, the next one slides up and covers it. */
+.stack-face {
+  height: 36rem;
+  box-shadow: 0 -14px 34px -18px rgb(var(--c-navy-deep) / 0.45), 0 18px 40px -22px rgb(var(--c-navy-deep) / 0.5);
+}
+.stack-card + .stack-card { margin-top: 1.5rem; }
+@media (max-width: 639px) and (min-height: 740px) {
+  .stack-card {
+    position: sticky;
+    top: calc(var(--header) + 0.75rem + var(--i) * 0.75rem);
+  }
+  .stack-face { height: min(40rem, calc(100svh - var(--header) - 6.25rem)); }
+  /* The gap is how long a card rests in full view before the next covers it. */
+  .stack-card + .stack-card { margin-top: 8.5rem; }
+}
+@supports (animation-timeline: view()) {
+  @media (max-width: 639px) and (prefers-reduced-motion: no-preference) {
+    .stack-model {
+      animation: model-in linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 45%;
+    }
+    @keyframes model-in {
+      from { transform: translateY(3rem) scale(0.82); }
+      to { transform: none; }
+    }
+  }
+}

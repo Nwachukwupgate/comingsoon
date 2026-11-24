@@ -134,7 +134,7 @@ export function Construction({ at, floors = 9 }: { at: V3; floors?: number }) {
   );
 }
 
-function Crane({ at, hex }: { at: V3; hex: string }) {
+export function Crane({ at, hex }: { at: V3; hex: string }) {
   return (
     <group position={at}>
       {[-0.55, 0.55].map((z) => (
@@ -176,7 +176,7 @@ function containerStacks() {
   return out;
 }
 
-function Ship() {
+export function Ship() {
   const { hull, boxes } = useMemo(() => {
     const s = new THREE.Shape();
     s.moveTo(-3.4, -0.72);

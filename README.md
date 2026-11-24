@@ -82,6 +82,7 @@ shape, or change the name in `content/services.ts` or the page.
 | `story-truck.webp`, `story-truck-mobile.webp` | Logistics scroll story | 2000x1125, 1200x960, transparent |
 | `story-building.webp`, `story-building-mobile.webp` | Real estate scroll story | 2000x1125, 1200x960, transparent |
 | `construction-site.webp`, `truck-fleet.webp`, `residential-towers.webp`, `container-port.webp`, `dubai-skyline.webp` | Cards and page headers | 1600x1067 |
+| `service-*.webp` | Service cards on phones (home page) | 1080x1008, transparent |
 | `public/og/*.jpg` | Link previews | 1200x630 |
 
 ## Replace 3D models
