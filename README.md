@@ -64,9 +64,15 @@ can then delete `app/api/enquiry`. Server-side validation no longer runs.
 **Stats:** a stat with `value: null` is hidden. Replace `null` once confirmed.
 
 **Testimonials:** add real ones, with permission, to the list. While it is empty
-the sections do not render. Set `service: "logistics"` or `"realEstate"` to show
-one at the end of that page's scroll story in place of the disclaimer card (the
-disclaimer still appears further down the page).
+no testimonial shows anywhere. Once added, on desktop:
+
+- one without `service` becomes the last message as visitors scroll the home hero,
+- one with `service` closes that service in the home services section, replacing
+  the key fact or disclaimer card there,
+- `service: "logistics"` or `"realEstate"` also closes that page's scroll story.
+
+The disclaimers still appear further down both investment pages. Keep each quote
+under about 160 characters so it fits the services section on small laptops.
 
 **Investor login:** set `features.investorLogin` to `true` in `content/site.ts`.
 
@@ -100,10 +106,12 @@ under 1.5 MB each. Update the matching still image so phones show the same thing
 
 ## Motion and fallbacks
 
-- Pinned 3D scenes run only on wide screens with a mouse or trackpad, WebGL 2
-  and enough memory. Everyone else, including phones, gets still images and the
-  same content in normal page flow. If the hero runs slowly it switches to the
-  still image for the rest of the visit.
+- The home hero, the home services section and both scroll stories are pinned on
+  screens at least 1024 px wide with a mouse or trackpad. Phones and tablets get
+  still images and normal page flow.
+- Without WebGL 2 or enough memory, the pinned sections still play, with still
+  images that zoom in place of the 3D. On a slow computer the 3D drops its
+  sharpness and stops moving by itself, but always follows the scroll.
 - `prefers-reduced-motion` turns off pinning, rotation, counters and fades.
 - Nothing is hidden without JavaScript.
 - GSAP ScrollTrigger drives the pinned scenes. The process timelines use a small

@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import ArtPicture from "@/components/ui/ArtPicture";
 import { loadGsap } from "@/lib/gsap";
-import { useMotionMode } from "@/lib/useMotionMode";
+import { useCan3D, useMotionMode } from "@/lib/useMotionMode";
 
 const Scene = dynamic(() => import("@/components/three/SkylineScene"), { ssr: false });
 
@@ -16,13 +16,18 @@ type Props = {
   imageAlt: string;
   modelUrl?: string;
   actions: ReactNode;
+  /** Third message: a testimonial, when the owner has supplied one. */
+  closing?: ReactNode;
 };
 
-export default function Hero3D({ title, lead, secondTitle, secondLead, imageAlt, modelUrl, actions }: Props) {
+export default function Hero3D({ title, lead, secondTitle, secondLead, imageAlt, modelUrl, actions, closing }: Props) {
   const mode = useMotionMode();
+  const can3D = useCan3D();
   const pin = useRef<HTMLDivElement>(null);
   const first = useRef<HTMLDivElement>(null);
   const second = useRef<HTMLDivElement>(null);
+  const third = useRef<HTMLDivElement>(null);
+  const still = useRef<HTMLDivElement>(null);
   const progress = useRef(0);
   const [load, setLoad] = useState(false);
   const [ready, setReady] = useState(false);
@@ -30,14 +35,14 @@ export default function Hero3D({ title, lead, secondTitle, secondLead, imageAlt,
 
   // Let the page paint and settle before loading 3D.
   useEffect(() => {
-    if (!scroll) return;
+    if (!scroll || !can3D) return;
     const id = setTimeout(() => setLoad(true), 350);
     return () => {
       clearTimeout(id);
       setLoad(false);
       setReady(false);
     };
-  }, [scroll]);
+  }, [scroll, can3D]);
 
   useEffect(() => {
     if (!scroll) return;
@@ -51,20 +56,32 @@ export default function Hero3D({ title, lead, secondTitle, secondLead, imageAlt,
           scrollTrigger: {
             trigger: pin.current,
             start: "top top",
-            end: "+=170%",
+            end: third.current ? "+=250%" : "+=170%",
             pin: true,
             scrub: 0.7,
             invalidateOnRefresh: true,
+            refreshPriority: 2,
           },
         });
+        // With a third message, the first two play in the first two thirds.
+        const k = third.current ? 0.64 : 1;
         tl.to(progress, { current: 1, duration: 1 }, 0)
-          .to(first.current!.children, { autoAlpha: 0, y: -60, duration: 0.2, stagger: 0.04 }, 0.1)
+          .to(still.current, { scale: 1.22, transformOrigin: "70% 60%", duration: 1 }, 0)
+          .to(first.current!.children, { autoAlpha: 0, y: -60, duration: 0.2 * k, stagger: 0.04 * k }, 0.1 * k)
           .fromTo(
             second.current!.children,
             { autoAlpha: 0, y: 70 },
-            { autoAlpha: 1, y: 0, duration: 0.2, stagger: 0.08, ease: "power2.out" },
-            0.5,
+            { autoAlpha: 1, y: 0, duration: 0.2 * k, stagger: 0.08 * k, ease: "power2.out" },
+            0.5 * k,
           );
+        if (third.current) {
+          tl.to(second.current!.children, { autoAlpha: 0, y: -50, duration: 0.1 }, 0.6).fromTo(
+            third.current,
+            { autoAlpha: 0, y: 70 },
+            { autoAlpha: 1, y: 0, duration: 0.14, ease: "power2.out" },
+            0.72,
+          );
+        }
       });
       revert = () => ctx.revert();
     });
@@ -92,14 +109,16 @@ export default function Hero3D({ title, lead, secondTitle, secondLead, imageAlt,
         </div>
 
         <div className="relative mx-auto aspect-[6/5] w-full max-w-3xl lg:absolute lg:inset-0 lg:aspect-auto lg:h-full lg:max-w-none">
-          <ArtPicture
-            desktop="/images/hero-skyline.webp"
-            mobile="/images/hero-skyline-mobile.webp"
-            alt={imageAlt}
-            eager
-            className={`object-cover transition-opacity lg:object-right duration-700 rtl:lg:-scale-x-100 ${ready ? "opacity-0" : ""}`}
-          />
-          {scroll && load && (
+          <div ref={still} className="absolute inset-0">
+            <ArtPicture
+              desktop="/images/hero-skyline.webp"
+              mobile="/images/hero-skyline-mobile.webp"
+              alt={imageAlt}
+              eager
+              className={`object-cover transition-opacity lg:object-right duration-700 rtl:lg:-scale-x-100 ${ready ? "opacity-0" : ""}`}
+            />
+          </div>
+          {scroll && can3D && load && (
             <div aria-hidden="true" className={`absolute inset-0 transition-opacity duration-700 ${ready ? "" : "opacity-0"}`}>
               <Scene progress={progress} modelUrl={modelUrl} onReady={() => setReady(true)} />
             </div>
@@ -119,6 +138,15 @@ export default function Hero3D({ title, lead, secondTitle, secondLead, imageAlt,
             </div>
           </div>
         </div>
+        {closing && (
+          <div className="relative z-10 bg-mist group-data-[mode=scroll]:pointer-events-none group-data-[mode=scroll]:absolute group-data-[mode=scroll]:inset-0 group-data-[mode=scroll]:bg-transparent">
+            <div className="wrap flex h-full items-center">
+              <div ref={third} className="max-w-[32rem] py-16 group-data-[mode=scroll]:py-0">
+                {closing}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

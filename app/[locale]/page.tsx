@@ -3,11 +3,13 @@ import CTABand from "@/components/sections/CTABand";
 import Hero3D from "@/components/sections/Hero3D";
 import ServiceCards from "@/components/sections/ServiceCards";
 import StatsCounter from "@/components/sections/StatsCounter";
+import TestimonialCard from "@/components/sections/TestimonialCard";
 import Testimonials from "@/components/sections/Testimonials";
 import Themes from "@/components/sections/Themes";
 import TrustStrip from "@/components/sections/TrustStrip";
 import WhoWeServe from "@/components/sections/WhoWeServe";
 import SiteLink from "@/components/ui/SiteLink";
+import { testimonials } from "@/content/testimonials";
 import { suppliedModel } from "@/lib/models";
 import { metadataFor, pageLocale, type PageProps } from "@/lib/page";
 
@@ -17,6 +19,7 @@ export default async function HomePage({ params }: PageProps) {
   await pageLocale(params);
   const t = await getTranslations("home");
   const c = await getTranslations("common");
+  const featured = testimonials.find((x) => !x.service);
   return (
     <>
       <Hero3D
@@ -26,6 +29,7 @@ export default async function HomePage({ params }: PageProps) {
         secondLead={t("hero.secondLead")}
         imageAlt={t("hero.imageAlt")}
         modelUrl={suppliedModel("skyline")}
+        closing={featured && <TestimonialCard item={featured} />}
         actions={
           <>
             <a href="#services" className="btn btn-primary">{c("exploreServices")}</a>

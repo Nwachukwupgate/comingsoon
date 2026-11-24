@@ -1,23 +1,71 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import type { ReactNode } from "react";
 import Icon from "@/components/ui/Icon";
 import SectionHead from "@/components/ui/SectionHead";
 import SiteLink from "@/components/ui/SiteLink";
-import { services, servicePath } from "@/content/services";
+import { services, servicePath, type ServiceKey } from "@/content/services";
+import { testimonials } from "@/content/testimonials";
+import Disclaimer from "./Disclaimer";
+import ServiceStory from "./ServiceStory";
+import TestimonialCard from "./TestimonialCard";
 
 const icons = { project: "hardhat", logistics: "truck", realEstate: "building", sourcing: "package" };
 
 export default function ServiceCards() {
   const h = useTranslations("home.services");
+  const t = useTranslations();
+  const c = useTranslations("common");
+  const titles = (key: string) => (t.raw(key) as { title: string }[]).map((x) => x.title);
+  const fact = (key: string, index: number) => {
+    const item = (t.raw(key) as { title: string; text: string }[])[index];
+    return <Fact title={item.title} text={item.text} />;
+  };
+
+  // What each service shows as the visitor scrolls: highlights, then the closing.
+  const content: Record<ServiceKey, { points: string[]; closing: ReactNode }> = {
+    project: { points: titles("project.sub"), closing: fact("thirdParty.items", 2) },
+    logistics: { points: titles("logistics.keyPoints"), closing: <Disclaimer text={t("logistics.disclaimer")} compact /> },
+    realEstate: { points: titles("realEstate.checks.items"), closing: <Disclaimer text={t("realEstate.disclaimer")} compact /> },
+    sourcing: { points: titles("sourcing.what.items"), closing: fact("home.trust.items", 3) },
+  };
+
+  const steps = services.map(({ key, cutout }) => {
+    const quote = testimonials.find((x) => x.service === key);
+    return {
+      key,
+      href: servicePath(key),
+      icon: icons[key],
+      name: t(`services.${key}.name`),
+      line: t(`services.${key}.line`),
+      points: content[key].points,
+      closing: quote ? <TestimonialCard item={quote} /> : content[key].closing,
+      image: cutout,
+    };
+  });
+
   return (
-    <section id="services" className="section bg-mist-blue">
-      <div className="wrap">
-        <SectionHead title={h("title")} lead={h("lead")} />
-        <PhoneCards />
-        <GridCards />
-      </div>
-    </section>
+    <div id="services">
+      <ServiceStory title={h("title")} lead={h("lead")} more={c("learnMore")} steps={steps}>
+        <section className="section bg-mist-blue">
+          <div className="wrap">
+            <SectionHead title={h("title")} lead={h("lead")} />
+            <PhoneCards />
+            <GridCards />
+          </div>
+        </section>
+      </ServiceStory>
+    </div>
+  );
+}
+
+function Fact({ title, text }: { title: string; text: string }) {
+  return (
+    <div className="rounded-xl border-s-4 border-accent bg-white p-6">
+      <p className="text-lg font-extrabold">{title}</p>
+      <p className="mt-1 text-muted">{text}</p>
+    </div>
   );
 }
 

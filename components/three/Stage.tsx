@@ -2,9 +2,8 @@
 
 import { Environment, Lightformer, PerformanceMonitor, useGLTF } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import * as THREE from "three";
-import { reportSlow } from "@/lib/useMotionMode";
 import type { Progress } from "./types";
 
 type V3 = [number, number, number];
@@ -44,7 +43,11 @@ function Rig({ progress, from, to, onReady }: { progress: Progress; from: Shot; 
       -mix(from.shiftY ?? 0, to.shiftY ?? 0) * size.height,
       size.width, size.height,
     );
-    if (frames.current < 4 && ++frames.current === 4) onReady();
+    // Reveal after a few frames, asking for them in case nothing is moving.
+    if (frames.current < 4) {
+      if (++frames.current === 4) onReady();
+      else invalidate();
+    }
     if (Math.abs(p.current - goal) > 0.0004) invalidate();
   });
   return null;
@@ -83,12 +86,20 @@ export function SuppliedModel({ url, size = 8 }: { url: string; size?: number })
   );
 }
 
-export function Lights({ dark = false, area = 14 }: { dark?: boolean; area?: number }) {
+export function Lights({ dark = false, area = 14, at = [0, 0, 0] }: { dark?: boolean; area?: number; at?: V3 }) {
+  const target = useMemo(() => {
+    const o = new THREE.Object3D();
+    o.position.set(...at);
+    return o;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [at[0], at[1], at[2]]);
   return (
     <>
+      <primitive object={target} />
       <hemisphereLight args={["#ffffff", dark ? "#134179" : "#C9D2DE", dark ? 0.4 : 0.75]} />
       <directionalLight
-        position={[area * 0.7, area * 1.1, area * 0.65]}
+        target={target}
+        position={[at[0] + area * 0.7, at[1] + area * 1.1, at[2] + area * 0.65]}
         intensity={dark ? 2.1 : 1.85}
         color="#FFF4EA"
         castShadow
@@ -119,14 +130,19 @@ type Props = {
   children: ReactNode;
   dark?: boolean;
   area?: number;
+  /** Where shadows are centred, when the subject is not at the origin. */
+  shadowAt?: V3;
   /** Keep rendering while visible, for scenes with their own movement. */
   alive?: boolean;
 };
 
-export default function Stage({ progress, from, to, onReady, children, dark, area, alive }: Props) {
+export default function Stage({ progress, from, to, onReady, children, dark, area, alive, shadowAt }: Props) {
   const host = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(true);
   const [dpr, setDpr] = useState(1.5);
+  // On a slow computer the scene stops moving by itself but still follows the scroll.
+  const [tired, setTired] = useState(false);
+  const running = alive && !tired;
 
   useEffect(() => {
     const io = new IntersectionObserver(([e]) => setVisible(e.isIntersecting));
@@ -138,13 +154,13 @@ export default function Stage({ progress, from, to, onReady, children, dark, are
     <div ref={host} className="absolute inset-0">
       <Canvas
         shadows="percentage"
-        dpr={[1, dpr]}
-        frameloop={!visible ? "never" : alive ? "always" : "demand"}
+        dpr={tired ? 0.8 : [1, dpr]}
+        frameloop={!visible ? "never" : running ? "always" : "demand"}
         camera={{ fov: 26, near: 1, far: 160 }}
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance", toneMapping: THREE.NeutralToneMapping }}
       >
-        {alive && <PerformanceMonitor bounds={() => [24, 50]} onDecline={() => (dpr > 1 ? setDpr(1) : reportSlow())} />}
-        <Lights dark={dark} area={area} />
+        {running && <PerformanceMonitor bounds={() => [24, 50]} onDecline={() => (dpr > 1 ? setDpr(1) : setTired(true))} />}
+        <Lights dark={dark} area={area} at={shadowAt} />
         {children}
         <Rig progress={progress} from={from} to={to} onReady={onReady} />
         {visible && <Wake progress={progress} />}

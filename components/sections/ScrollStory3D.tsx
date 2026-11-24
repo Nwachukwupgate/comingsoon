@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import ArtPicture from "@/components/ui/ArtPicture";
 import { loadGsap } from "@/lib/gsap";
-import { useMotionMode } from "@/lib/useMotionMode";
+import { useCan3D, useMotionMode } from "@/lib/useMotionMode";
 
 const scenes = {
   truck: dynamic(() => import("@/components/three/TruckScene"), { ssr: false }),
@@ -25,11 +25,13 @@ type Props = {
 
 export default function ScrollStory3D({ scene, title, lead, points, closing, image, imageAlt, modelUrl }: Props) {
   const mode = useMotionMode();
+  const can3D = useCan3D();
   const root = useRef<HTMLElement>(null);
   const pin = useRef<HTMLDivElement>(null);
   const list = useRef<HTMLUListElement>(null);
   const intro = useRef<HTMLDivElement>(null);
   const end = useRef<HTMLDivElement>(null);
+  const still = useRef<HTMLDivElement>(null);
   const progress = useRef(0);
   const [near, setNear] = useState(false);
   const [ready, setReady] = useState(false);
@@ -38,7 +40,7 @@ export default function ScrollStory3D({ scene, title, lead, points, closing, ima
 
   // Load 3D only when the section is about to appear.
   useEffect(() => {
-    if (!scroll || !root.current) return;
+    if (!scroll || !can3D || !root.current) return;
     const io = new IntersectionObserver(
       ([e]) => {
         if (e.isIntersecting) {
@@ -54,7 +56,7 @@ export default function ScrollStory3D({ scene, title, lead, points, closing, ima
       setNear(false);
       setReady(false);
     };
-  }, [scroll]);
+  }, [scroll, can3D]);
 
   useEffect(() => {
     if (!scroll) return;
@@ -75,7 +77,9 @@ export default function ScrollStory3D({ scene, title, lead, points, closing, ima
             invalidateOnRefresh: true,
           },
         });
-        tl.to(progress, { current: 1, duration: 1, ease: "none" }, 0).from(
+        tl.to(progress, { current: 1, duration: 1, ease: "none" }, 0);
+        tl.to(still.current, { scale: 1.2, transformOrigin: "70% 55%", duration: 1, ease: "none" }, 0);
+        tl.from(
           intro.current!.lastElementChild,
           { autoAlpha: 0, y: 40, duration: 0.1 },
           0.05,
@@ -100,13 +104,15 @@ export default function ScrollStory3D({ scene, title, lead, points, closing, ima
         className="group relative overflow-hidden bg-[radial-gradient(60rem_40rem_at_72%_45%,#134179_0%,#062450_55%,#041733_100%)] data-[mode=scroll]:h-[100svh] data-[mode=scroll]:min-h-[35rem]"
       >
         <div className="relative aspect-[5/4] w-full lg:absolute lg:inset-0 lg:aspect-auto lg:h-full">
-          <ArtPicture
-            desktop={image}
-            mobile={image.replace(".webp", "-mobile.webp")}
-            alt={imageAlt}
-            className={`object-contain transition-opacity duration-700 lg:object-cover rtl:lg:-scale-x-100 ${ready ? "opacity-0" : ""}`}
-          />
-          {scroll && near && (
+          <div ref={still} className="absolute inset-0">
+            <ArtPicture
+              desktop={image}
+              mobile={image.replace(".webp", "-mobile.webp")}
+              alt={imageAlt}
+              className={`object-contain transition-opacity duration-700 lg:object-cover rtl:lg:-scale-x-100 ${ready ? "opacity-0" : ""}`}
+            />
+          </div>
+          {scroll && can3D && near && (
             <div aria-hidden="true" className={`absolute inset-0 transition-opacity duration-700 ${ready ? "" : "opacity-0"}`}>
               <Scene progress={progress} modelUrl={modelUrl} onReady={() => setReady(true)} />
             </div>
