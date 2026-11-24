@@ -1,40 +1,41 @@
 {
-  "name": "coming-soon",
-  "description": "Coming Soon | Upsworth PMS",
-  "version": "1.0.0",
-  "keywords": [
-    "coming soon",
-    "tailwind",
-    "tailwindcss",
-    "nextjs",
-    "html"
-  ],
-  "author": "Promise",
+  "name": "upsworth-pms",
+  "description": "Upsworth PMS: coming soon page and marketing website",
+  "version": "2.0.0",
   "private": true,
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "export": "next export",
-    "type-check": "tsc"
+    "lint": "eslint .",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "autoprefixer": "^10.4.0",
-    "eslint": "^7.32.0",
-    "eslint-config-next": "12.0.4",
-    "next": "latest",
-    "postcss": "^8.3.11",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "resend": "^6.39.0",
-    "sharp": "^0.29.3",
-    "tailwindcss": "^2.2.19"
+    "@react-three/drei": "10.7.9",
+    "@react-three/fiber": "9.8.2",
+    "gsap": "3.15.1",
+    "lucide-react": "1.79.0",
+    "next": "16.4.6",
+    "next-intl": "4.16.0",
+    "react": "19.2.9",
+    "react-dom": "19.2.9",
+    "resend": "6.39.0",
+    "three": "0.180.0",
+    "zod": "4.6.7"
   },
   "devDependencies": {
-    "@types/node": "^16.11.7",
-    "@types/react": "^17.0.35",
-    "@types/react-dom": "^17.0.11",
-    "typescript": "4.5.2"
+    "@types/node": "22.20.5",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.7",
+    "@types/three": "0.180.0",
+    "autoprefixer": "10.7.0",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.4.6",
+    "postcss": "8.5.33",
+    "tailwindcss": "3.4.19",
+    "typescript": "5.9.3"
   }
 }

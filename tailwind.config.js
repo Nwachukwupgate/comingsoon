@@ -1,13 +1,40 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  mode: "jit",
-  purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
-  darkMode: false, // or 'media' or 'class'
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+  ],
   theme: {
-    backgroundImage: {
-      hero:
-        "url('https://html.creativegigstf.com/vCamp/vCamp/images/assets/bg_01.png')",
-    },
     extend: {
+      /* ---- Upsworth marketing site (app/) ----
+         Values live as CSS variables in app/globals.css. */
+      colors: {
+        navy: {
+          DEFAULT: "rgb(var(--c-navy) / <alpha-value>)",
+          deep: "rgb(var(--c-navy-deep) / <alpha-value>)",
+          soft: "rgb(var(--c-navy-soft) / <alpha-value>)",
+        },
+        accent: {
+          DEFAULT: "rgb(var(--c-accent) / <alpha-value>)",
+          ink: "rgb(var(--c-accent-ink) / <alpha-value>)",
+        },
+        mist: {
+          DEFAULT: "rgb(var(--c-mist) / <alpha-value>)",
+          blue: "rgb(var(--c-mist-blue) / <alpha-value>)",
+        },
+        line: "rgb(var(--c-line) / <alpha-value>)",
+        muted: "rgb(var(--c-muted) / <alpha-value>)",
+      },
+      fontFamily: {
+        site: ["var(--font-manrope)", "ui-sans-serif", "system-ui", "sans-serif"],
+      },
+      maxWidth: { site: "78rem" },
+
+      /* ---- Coming soon page (pages/index.tsx) ---- */
+      backgroundImage: {
+        hero: "url('https://html.creativegigstf.com/vCamp/vCamp/images/assets/bg_01.png')",
+      },
       screens: {
         // Phones held sideways: wide enough for `sm`, but very little height.
         short: { raw: "(orientation: landscape) and (max-height: 500px)" },
@@ -25,40 +52,18 @@ module.exports = {
       },
       keyframes: {
         blob: {
-          "0%": {
-            transform: "translate(0px, 0px) scale(1)",
-            filter: "blur(2px)",
-          },
-          "33%": {
-            transform: "translate(8%, -13%) scale(1.1)",
-            filter: "blur(0px)",
-          },
-          "66%": {
-            transform: "translate(-5%, 5%) scale(0.9)",
-            filter: "blur(2px)",
-          },
-          "100%": {
-            transform: "translate(0px, 0px) scale(1)",
-            filter: "blur(1px)",
-          },
+          "0%": { transform: "translate(0px, 0px) scale(1)", filter: "blur(2px)" },
+          "33%": { transform: "translate(8%, -13%) scale(1.1)", filter: "blur(0px)" },
+          "66%": { transform: "translate(-5%, 5%) scale(0.9)", filter: "blur(2px)" },
+          "100%": { transform: "translate(0px, 0px) scale(1)", filter: "blur(1px)" },
         },
         blob2: {
-          "0%": {
-            transform: "translate(0px, 0px) scale(1)",
-            filter: "blur(2px)",
-          },
-          "50%": {
-            transform: "translate(20px, -20px) scale(1.1)",
-            filter: "blur(0px)",
-          },
-          "100%": {
-            transform: "translate(0px, 0px) scale(1)",
-            filter: "blur(1px)",
-          },
+          "0%": { transform: "translate(0px, 0px) scale(1)", filter: "blur(2px)" },
+          "50%": { transform: "translate(20px, -20px) scale(1.1)", filter: "blur(0px)" },
+          "100%": { transform: "translate(0px, 0px) scale(1)", filter: "blur(1px)" },
         },
       },
     },
   },
-  variants: {},
   plugins: [],
 };

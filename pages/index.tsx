@@ -1,4 +1,4 @@
-import Layout from "../components/Layout";
+import Layout from "../components/coming-soon/Layout";
 import { useState } from "react";
 
 const IndexPage = () => {
@@ -88,7 +88,7 @@ const IndexPage = () => {
             role="status"
             className={`text-center text-base sm:text-lg short:text-sm font-medium ${
               message ? "mt-3 py-2 px-4 rounded-xl bg-white bg-opacity-90" : ""
-            } ${isError ? "text-red-700" : "text-green-700"}`}
+            } ${isError ? "text-red-700" : "text-emerald-700"}`}
           >
             {message}
           </p>
@@ -137,6 +137,24 @@ const IndexPage = () => {
                   d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
                   clipRule="evenodd"
                 ></path>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/upsworth-project-management-services-a25667350"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="flex items-center justify-center w-11 h-11 lg:w-10 lg:h-10 rounded-full bg-gray-50 transition ease-in-out duration-500 hover:bg-red-500 hover:text-white hover:shadow-lg"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path d="M20.45 2H3.55C2.69 2 2 2.68 2 3.53v16.94c0 .85.69 1.53 1.55 1.53h16.9c.86 0 1.55-.68 1.55-1.53V3.53C22 2.68 21.31 2 20.45 2ZM7.93 19.04H4.96V9.5h2.97v9.54ZM6.45 8.19a1.72 1.72 0 1 1 0-3.44 1.72 1.72 0 0 1 0 3.44Zm12.6 10.85h-2.97V14.4c0-1.1-.02-2.53-1.54-2.53-1.54 0-1.78 1.2-1.78 2.45v4.72H9.8V9.5h2.85v1.3h.04c.4-.75 1.37-1.54 2.81-1.54 3.01 0 3.56 1.98 3.56 4.55v5.23Z" />
               </svg>
             </a>
           </li>
