@@ -10,16 +10,16 @@ export default function Footer() {
   const n = useTranslations("nav");
   const s = useTranslations("services");
   const c = useTranslations("common");
-  const a = "inline-block py-1.5 text-white/80 transition hover:text-white hover:underline underline-offset-4";
+  const a = "inline-block py-1.5 text-navy/80 transition hover:text-navy hover:underline underline-offset-4";
   const row = "flex items-start gap-3";
-  const icon = "mt-2 h-5 w-5 shrink-0 text-accent";
+  const icon = "mt-2 h-5 w-5 shrink-0 text-accent-ink";
 
   return (
-    <footer className="on-dark bg-navy-deep text-white">
+    <footer className="border-t border-line bg-mist text-navy">
       <div className="wrap grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.5fr_1.2fr_0.8fr_1.6fr]">
         <div>
-          <Logo layout="stacked" light className="h-36" />
-          <p className="mt-5 max-w-[16rem] text-white/75">{t("tagline")}</p>
+          <Logo layout="stacked" className="h-36" />
+          <p className="mt-5 max-w-[16rem] text-muted">{t("tagline")}</p>
         </div>
         <nav aria-label={t("services")}>
           <h2 className="mb-3 text-base tracking-normal">{t("services")}</h2>
@@ -63,7 +63,7 @@ export default function Footer() {
             </li>
             <li className={row}>
               <MapPin aria-hidden="true" className={icon} />
-              <address className="py-1.5 not-italic text-white/80">
+              <address className="py-1.5 not-italic text-navy/80">
                 {c("addressLine1")}
                 <br />
                 {c("addressLine2")}
@@ -72,8 +72,8 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="border-t border-white/15">
-        <div className="wrap flex flex-col gap-2 py-6 pe-24 text-sm text-white/70 sm:flex-row sm:justify-between">
+      <div className="border-t border-navy/15">
+        <div className="wrap flex flex-col gap-2 py-6 pe-24 text-sm text-muted sm:flex-row sm:justify-between">
           <p>{t("rights", { year: String(new Date().getFullYear()) })}</p>
           {site.credit.name && (
             <p>
