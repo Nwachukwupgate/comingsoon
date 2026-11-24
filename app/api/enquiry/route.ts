@@ -1,8 +1,7 @@
-import { Resend } from "resend";
 import en from "@/messages/en.json";
-import { site } from "@/content/site";
 import { detailFields } from "@/lib/enquiry";
 import { enquirySchema, fieldErrors } from "@/lib/enquirySchema";
+import { sendToCompany } from "@/lib/mail";
 
 const MAX_BYTES = 20_000;
 const clean = (v: string) => v.replace(/[\r\n]+/g, " ").trim();
@@ -27,12 +26,6 @@ export async function POST(request: Request) {
     return Response.json({ ok: false, errors: fieldErrors(parsed.error) }, { status: 400 });
   }
 
-  const key = process.env.RESEND_API_KEY;
-  if (!key) {
-    console.error("Enquiry not sent: RESEND_API_KEY is not set.");
-    return Response.json({ ok: false, error: "unavailable" }, { status: 503 });
-  }
-
   const v = parsed.data;
   const labels = en.form.fields as Record<string, string>;
   const options = en.form.options as Record<string, string>;
@@ -43,7 +36,7 @@ export async function POST(request: Request) {
       .filter((f) => v.details[f.name]?.trim())
       .map((f) => `${labels[f.name]}: ${f.options ? options[v.details[f.name]] : v.details[f.name].trim()}`),
     "",
-    `Name: ${v.name}`,
+    `Name: ${clean(v.name)}`,
     `Email: ${v.email}`,
     `Phone: ${v.phone}`,
     `Preferred contact: ${options[v.method]}`,
@@ -55,18 +48,11 @@ export async function POST(request: Request) {
     `Site language: ${v.locale === "ar" ? "Arabic" : "English"}`,
   ];
 
-  try {
-    const { error } = await new Resend(key).emails.send({
-      from: process.env.ENQUIRY_FROM || "Upsworth PMS <onboarding@resend.dev>",
-      to: [process.env.ENQUIRY_TO || site.email],
-      replyTo: v.email,
-      subject: clean(`Website enquiry: ${serviceName}, ${v.name}`),
-      text: lines.join("\n"),
-    });
-    if (error) throw new Error(error.message);
-    return Response.json({ ok: true });
-  } catch (e) {
-    console.error("Enquiry not sent:", e instanceof Error ? e.message : e);
-    return Response.json({ ok: false, error: "unavailable" }, { status: 502 });
-  }
+  const sent = await sendToCompany({
+    replyTo: v.email,
+    subject: clean(`Website enquiry: ${serviceName}, ${v.name}`),
+    text: lines.join("\n"),
+  });
+  if (sent.ok) return Response.json({ ok: true });
+  return Response.json({ ok: false, error: "unavailable" }, { status: sent.reason === "failed" ? 502 : 503 });
 }

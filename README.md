@@ -36,13 +36,15 @@ Copy `.env.example` to `.env`. On the host, add the same names in its settings.
 
 | Name | Needed | Purpose |
 | --- | --- | --- |
-| `RESEND_API_KEY` | Yes | Sends enquiry emails |
-| `ENQUIRY_FROM` | Yes, in production | Sender address on a domain verified in Resend |
-| `ENQUIRY_TO` | No | Where enquiries go. Default `info@upsworth-pms.com` |
+| `RESEND_API_KEY` | Yes | Sends the enquiry and signup emails. A send-only key is enough |
+| `ENQUIRY_FROM` | No | Sender. Default `Upsworth Website <website@upsworth-pms.com>` |
+| `ENQUIRY_TO` | No | Where emails go. Default `info@upsworth-pms.com` |
 
-Until a domain is verified at [resend.com/domains](https://resend.com/domains),
-Resend only delivers to the account owner's own address, and the forms show
-their failure message.
+The sender's domain must be verified at [resend.com/domains](https://resend.com/domains).
+Until it is, the forms show their failure message. Resend uses its own records
+(`send` and `resend._domainkey`), so the Microsoft 365 records on `@` and
+`autodiscover` stay exactly as they are. The sender needs no mailbox, because
+replies go to the visitor.
 
 **Without a backend (Formspree):** create a form at formspree.io, then in
 `components/forms/useEnquiry.ts` change the `fetch` address from `/api/enquiry`
